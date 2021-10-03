@@ -1,0 +1,462 @@
+<!DOCTYPE HTML>
+
+<head>
+    <title> YBSG Kit rework</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spectral|Rubik">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="ybsgkit.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $(".type1").click(function () {
+                $(".mySidenav a").css("background-color", "green");
+                $("header, h1, h2, h3, h4, h5").css("color", "green");
+                $("input").css("border-color", "green");
+		$("body").css("background", "linear-gradient(90deg, hsl(180, 1%, 90%), hsl(110, 12%, 80%), hsl(180, 1%, 80%) )" );
+            });
+            $(".type2").click(function () {
+                $(".mySidenav a").css("background-color", "red");
+                $("header, h1, h2, h3, h4, h5").css("color", "red");
+                $("input").css("border-color", "red");
+		$("body").css("background", "linear-gradient(90deg, hsl(180, 1%, 90%), hsl(10, 12%, 80%), hsl(180, 1%, 80%) )" );
+            });
+            $(".type3").click(function () {
+                $(".mySidenav a").css("background-color", "orange");
+                $("header, h1, h2, h3, h4, h5").css("color", "darkorange");
+                $("input").css("border-color", "darkorange");
+                $(".var-1").addClass("disabled");
+                $(".var-2").addClass("disabled");
+		$("body").css("background", "linear-gradient(90deg, hsl(180, 1%, 90%), hsl(40, 15%, 80%), hsl(180, 1%, 80%) )" );
+            });
+            $(".var-1").click(function () {
+                $(".var-display, .note-line1 .space2").append("<b> House Purchase </b>");
+                $(".new-cust, .affordability").css("display", "inherit");
+                $("#tab3").addClass("disabled");
+                $("#tab3 b").css("visibility", "visible");
+            });
+            $(".var-2").click(function () {
+                $(".var-display, .note-line1 .space2").append("<b> Remortgage </b>");
+                $(".new-cust, .affordability").css("display", "inherit");
+                $("#tab3").addClass("disabled");
+                $("#tab3 b").css("visibility", "visible");
+            });
+            $(".var-3").click(function () {
+                $(".var-display, .note-line1 .space2").append("<b> Portability </b>");
+                $(".new-cust, .affordability").css("display", "inherit");
+            });
+            $(".var-4").click(function () {
+                $(".var-display, .note-line1 .space2").append("<b>Additional Borrowing</b>");
+                $(".al-app, .affordability").css("display", "inherit");
+                $("#tab5").removeClass("disabled").addClass("is-used");
+                $("#tab5 b").css("visibility", "hidden");
+                $("#tab6").addClass("disabled");
+                $("#tab6 b").css("visibility", "visible");
+            });
+            $(".var-5").click(function () {
+                $(".var-display, .note-line1 .space2").append("<b>Product Transfer</b>");
+                $(".pt-app").css("display", "inherit");
+                $("#tab6").addClass("disabled");
+                $("#tab6 b").css("visibility", "visible");
+                if ($("#tab5").hasClass("is-used")) {
+                    return 0;
+                }
+                else {
+                    $("#tab5").addClass("disabled");
+                    $("#tab5 b").css("visibility", "visible");
+                }
+            });
+            $(".var-6").click(function () {
+                $(".var-display, .note-line1 .space2").append("<b>Transfer of Equity</b>");
+                $(".affordability").css("display", "inherit");
+                $(".toe-app").css("display", "inherit");
+                $("#tab5").removeClass("disabled").addClass("is-used");
+                $("#tab5 b").css("visibility", "hidden");
+                $("#tab6").addClass("disabled");
+                $("#tab6 b").css("visibility", "visible");
+            });
+            $(".var-7").click(function () {
+                $(".var-display, .note-line1 .space2").append("<b>Type/Term Amendment</b>");
+                $(".affordability").css("display", "inherit");
+                $("#tab5").removeClass("disabled").addClass("is-used");
+                $("#tab5 b").css("visibility", "hidden");
+                $("#tab6").addClass("disabled");
+                $("#tab6 b").css("visibility", "visible");
+            });
+
+            $(".app1verif").click(function () {
+                $("#tab1 span").css("visibility", "visible");
+                $(".note-line3 .space").text("Verified, ");
+            });
+            $(".app2verif").click(function () {
+                $("#tab1 span").css("visibility", "visible");
+                $(".note-line3 .space").text("Verified, ");
+            });
+            $(".offer-accept").click(function () {
+                $(".note-line4 .space1").html("Offer accepted <br>");
+            });
+            $(".app1auth").click(function () {
+                let w = $(".app1name").val();
+                $(".note-line4 .space").append(w + " has provided paperless authority, ");
+            });
+            $(".app2auth").click(function () {
+                let w = $(".app2name").val();
+                $(".note-line4 .space").append(w + " has provided paperless authority, ");
+            });
+            $(".manda-done").click(function () {
+                $("#tab2 span").css("visibility", "visible");
+                $(".note-line3 .space1").append("Mandatories done, ");
+            });
+            $(".recap-done").click(function () {
+                $("#tab3 span").css("visibility", "visible");
+                $(".note-line3 .space2").append("Account recap done, ");
+            });
+            $(".eligi-done").click(function () {
+                $("#tab4 span").css("visibility", "visible");
+                $(".note-line3 .space3").append("Eligibility checked, ");
+            });
+            $(".affo-done").click(function () {
+                $("#tab5 span").css("visibility", "visible");
+                $(".note-line3 .space4").text("Affordability done, ");
+            });
+            $(".aip-done").click(function () {
+                $("#tab6 span").css("visibility", "visible");
+                $(".note-line3 .space5").html("Approval in Principle done <br>");
+            });
+            $(".hand-done").click(function () {
+                $("#tab7 span, .note-line3 .space6").css("visibility", "visible");
+            });
+
+        });
+
+    </script>
+
+</head>
+
+<body ng-app="">
+
+    <nav class="row">
+
+        <!--Brand Select-->
+        <div class="dropdown col-6">
+            <button data-toggle="dropdown" style="margin-top:5px;"> Choose Brand &#9660; </button>
+            <div class="dropdown-menu">
+                <p class="dropdown-item type1"> Yorkshire Building Society </p>
+                <p class="dropdown-item type2"> Chelsea Building Society </p>
+                <p class="dropdown-item type3" data-toggle="collapse" data-target=".accord"> Accord Mortgages </p>
+            </div>
+        </div>
+
+        <!--Variation Select-->
+        <div class="dropdown col-6">
+            <button data-toggle="dropdown" style="margin-top:5px;"> Choose Variation &#9660; </button>
+            <div class="dropdown-menu">
+                <b class="dropdown-header" style="font-weight:700; font-size:20px;"> New Customer </b>
+                <p class="dropdown-item var-1"> House Purchase </p>
+                <p class="dropdown-item var-2"> Remortgage </p>
+                <b class="dropdown-header" style="font-weight:700; font-size:20px;"> Existing Customer </b>
+                <p class="dropdown-item var-3"> Portability </p>
+                <p class="dropdown-item var-4"> Additional Borrowing </p>
+                <p class="dropdown-item var-5"> Product Transfer </p>
+                <p class="dropdown-item var-6"> Transfer of Equity </p>
+                <p class="dropdown-item var-7"> Type/Term Amendment </p>
+            </div>
+        </div>
+
+    </nav>
+
+    <!--Side Navigation-->
+    <div class="mySidenav sidenav nav nav-tabs">
+        <a href=".cust-info" id="tab1" class="nav-link" data-toggle="tab">Customer Details 		<span style="float:right;"> &#10003; </span><b class="space" style="position:absolute; right: 10px; visibility: hidden;"> &#9940; </b></a>
+        <a href=".manda" id="tab2" class="nav-link" data-toggle="tab">Mandatories		<span style="float:right;"> &#10003; </span><b class="space" style="position:absolute; right: 10px; visibility: hidden;"> &#9940; </b></a>
+        <a href=".recap" id="tab3" class="nav-link" data-toggle="tab">Account Recap		<span style="float:right;"> &#10003; </span><b class="space" style="position:absolute; right: 10px; visibility: hidden;"> &#9940; </b></a>
+        <a href=".eligi" id="tab4" class="nav-link" data-toggle="tab">Eligibility		<span style="float:right;"> &#10003; </span><b class="space" style="position:absolute; right: 10px; visibility: hidden;"> &#9940; </b></a>
+        <a href=".affor" id="tab5" class="nav-link" data-toggle="tab">Affordability		<span style="float:right;"> &#10003; </span><b class="space" style="position:absolute; right: 10px; visibility: hidden;"> &#9940; </b></a>
+        <a href=".aip" id="tab6" class="nav-link" data-toggle="tab">Approval in principle	<span style="float:right;"> &#10003; </span><b class="space" style="position:absolute; right: 10px; visibility: hidden;"> &#9940; </b></a>
+        <a href=".handclose" id="tab7" class="nav-link" data-toggle="tab">Handover/Close		<span style="float:right;"> &#10003; </span><b class="space" style="position:absolute; right: 10px; visibility: hidden;"> &#9940; </b></a>
+        <a href=".notes" id="tab8" class="nav-link" data-toggle="tab">Notes			<span style="float:right;"> &#10003; </span><b class="space" style="position:absolute; right: 10px; visibility: hidden;"> &#9940; </b></a>
+    </div>
+
+    <!--Easy Access Customer Information-->
+    <header>
+        <p class="var-display" style="margin:5px;background-color:white; text-align:center;"> Variation(s): </p>
+        <div class="row" style="padding:2.5px; margin:5px; background-color:white;">
+            <p class="col-6 space4"> Account Number: <b> {{accnum}} </b> </p>
+            <p class="col-6 space5"> Porting Ref: <b> {{portnum}} </b> </p>
+        </div>
+        <div class="row" style="padding:2.5px; margin:5px; background-color:white;">
+            <p class="col-7 space"> A1: <b style="text-transform: capitalize;"> {{app1name | lowercase}} </b> </p>
+            <p class="col-5 space1"> DoB: <b>{{app1dob}}</b> </p>
+            <p class="col-7 space2"> A2: <b style="text-transform: capitalize;">{{app2name | lowercase}}</b> </p>
+            <p class="col-5 space3"> DoB: <b>{{app2dob}}</b> </p>
+        </div>
+    </header>
+
+    <!--Main Content-->
+    <div class="tab-content" style="padding-left:50px;">
+
+        <!--Customer Information-->
+        <div class="tab-pane active container cust-info">
+            <h3>Customer information </h3>
+            <form class="row">
+                <div class="col-12 row" style="background-color:white;margin: 10px; padding:20px;">
+                    <p class="col-4 col-md-2"> Account number: </p> 	<input ng-model="accnum" class="col-8 col-md-4" type="text" placeholder="Usual format XXX XXX XX80...">
+                    <p class="col-4 col-md-2"> Portability ref: </p> <input ng-model="portnum" class="col-8 col-md-4" type="text" placeholder="Usual format XXX XXX XX80...">
+                </div>
+                <div class="col-12 row" style="background-color:white;margin: 10px; padding:20px;">
+                    <h5 class="col-12"> Applicant 1 </h5>
+                    <p class="col-4 col-md-2"> Name: </p> 		    <input ng-model="app1name" class="app1name col-8 col-md-10" type="text" placeholder="Enter name...">
+                    <p class="col-4 col-md-2"> DoB: </p> 			<input ng-model="app1dob" class="col-8 col-md-4" type="text" placeholder="Enter date of birth...">
+                    <p class="col-4 col-md-2"> MOB: </p>			<input type="tel" placeholder="Mobile phone..." class="col-8 col-md-4">
+                    <p class="col-4 col-md-2"> Postcode: </p> 		<input type="text" placeholder="Enter postcode..." class="col-8 col-md-4">
+                    <p class="col-4 col-md-2"> Email: </p>			<input type="email" placeholder="Email address..." class="col-8 col-md-4">
+                    <p class="col-6"> Verified: </p> 			<input class="app1verif larger" type="checkbox" style="margin: 5px;">
+                    <p class="col-6"> Contact details checked: </p> 		<input type="checkbox" class="larger" style="margin: 5px;">
+                </div>
+                <div class="col-12 row" style="background-color:white;margin:10px; padding:20px;">
+                    <h5 class="col-12"> Applicant 2 </h5>
+                    <p class="col-4 col-md-2"> Name: </p> 		<input ng-model="app2name" class="app2name col-8 col-md-10" type="text" placeholder="Enter name...">
+                    <p class="col-4 col-md-2"> DoB: </p> 			<input ng-model="app2dob" class="col-8 col-md-4" type="text" placeholder="Enter date of birth...">
+                    <p class="col-4 col-md-2"> MOB: </p>			<input type="tel" placeholder="Mobile phone..." class="col-8 col-md-4">
+                    <p class="col-4 col-md-2"> Postcode: </p> 		<input type="text" placeholder="Enter postcode..." class="col-8 col-md-4">
+                    <p class="col-4 col-md-2"> Email: </p>			<input type="email" placeholder="Email address..." class="col-8 col-md-4">
+                    <p class="col-6"> Verified: </p> 			<input class="app2verif larger" type="checkbox" style="margin: 5px;">
+                    <p class="col-6"> Contact details checked: </p> 		<input type="checkbox" class="larger" style="margin: 5px;">
+                </div>
+            </form>
+        </div>
+
+        <!--Mandatory Tab-->
+        <div class="tab-pane container manda">
+            <h3> Mandatories </h3>
+            <div class="row">
+                <div class="row col-12" style="font-size:19px;background-color:white;margin: 10px; padding:20px;">
+                    <p class="col-12">  <input type="checkbox"> Set an appropriate agenda </p>
+                    <p class="col-12">  <input type="checkbox"> Confirm CSR will not provide advice </p>
+                    <p class="col-12">  <input type="checkbox"> <strike> Data protection statement </strike> </p>
+                    <p class="col-12 manda-done">  <input type="checkbox"> Data processing statement </p>
+                    <p class="col-12">  <input type="checkbox"> Joint authority statement </p>
+                    <p class="col-12 new-cust">  <input type="checkbox"> Annual General Meeting info <i> (Not Accord customers) </i> </p>
+                    <p class="col-12 new-cust">  <input type="checkbox"> Explain paperless application service </p>
+                    <p class="col-12 new-cust">  <input type="checkbox"> Concessionary purchase? </p>
+                    <p class="col-12 new-cust" style="padding-left:45px;">  <input type="checkbox"> Offer accepted for new prop? </p>
+                    <p class="col-12 new-cust" style="padding-left:45px;">  <input type="checkbox"> Living together? </p>
+                    <div class="row accord collapse" style="padding-left: 20px; width:95%;">
+                        <h5 class="col-12"> Accord Customers </h5>
+                        <p class="col-12">  <input type="checkbox"> Active broker relationship? </p>
+                        <p class="col-12">  <input type="checkbox"> Planning to use broker again in future? </p>
+                        <div class="col-12">  (Outline the customers intentions in the box below) </div>
+                        <textarea ng-model="brokerRel" rows=3 placeholder="Customer wants to..." style="width:100%;"></textarea>
+                        <button class="col-12" style="padding:5px;border:none;" data-toggle="collapse" data-target=".man-acc-info"> Using Accord directly </button>
+                        <div class="col-12 man-acc-info collapse"> <input type="checkbox"> The broker will still have access to personal data unless the relationship is terminated </div>
+                        <div class="col-12 man-acc-info collapse"> <input type="checkbox"> Does applicant want to end the relationship? </div>
+                        <button class="col-6 man-acc-info collapse" style="padding:5px;border:none;" data-toggle="collapse" data-target=".man-acc-info-end"> End relationship </button>
+                        <button class="col-6 man-acc-info collapse" style="padding:5px;border:none;" data-toggle="collapse" data-target=".man-acc-info-cont"> Maintain relationship</button>
+                        <div class="col-12 man-acc-info-end collapse"> <input type="checkbox"> Ensure this is ended on 'Activity Players' </div>
+                        <div class="col-12 man-acc-info-cont collapse"> <input type="checkbox"> Check to see the relationship remains active </div>
+                        <div class="col-12 man-acc-info-cont collapse"> <input type="checkbox"> Re-establish with 'accord_complaints@accordmortgages.com' </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Account Recap Tab-->
+        <div class="tab-pane container recap" style="font-size:19px;">
+            <h3> Account Recap </h3>
+            <div class="row">
+                <div class="row col-12" style="background-color:white;margin: 10px; padding:20px;">
+                    <h5 class="col-12"> Check the following; </h5>
+                    <p class="col-12"> <input type="checkbox"> Repayment history </p>
+                    <p class="col-12"> <input type="checkbox"> Existing arrears </p>
+                    <p class="col-12"> <input type="checkbox"> Loan to value </p>
+                    <p class="col-12" style="text-indent: 40px;"> <input type="number" placeholder="LTV%"> </p>
+                    <h5 class="col-12"> Confirm the following to customer; </h5>
+                    <p class="col-12"> <input type="checkbox"> Number of mortgage parts </p>
+                    <p class="col-12"> <input type="checkbox"> Product interest rate </p>
+                    <p class="col-12"> <input type="checkbox"> Product expiry date </p>
+                    <p class="col-12"> <input type="checkbox"> Remaining term </p>
+                    <p class="col-12"> <input type="checkbox"> Repayment type </p>
+                    <p class="col-12"> <input class="recap-done" type="checkbox"> Balance </p>
+                </div>
+            </div>
+        </div>
+
+        <!--Eligibility-->
+        <div class="tab-pane container eligi">
+            <h3> Eligibility </h3>
+            <!-- Property purchase stuff HP/RM/Port -->
+            <div class="row col-12 new-cust" style="padding:20px; margin: 10px; background-color:white;">
+                <h5 class="col-12"> Property Information (Optional) </h5>
+                <div class="col-12"> <input class="offer-accept" type="checkbox"> Has an offer been accepted for the new property? </div>
+                <div class="col-12 note-line1" style="text-align:center;">
+                    <i>
+                        Which applicants have authorised the paperless application?  <br>
+                        <input class="app1auth" type="checkbox"> <i class="space"> {{app1name}} </i> <br>
+                        <input class="app2auth" type="checkbox"> <i class="space1"> {{app2name}} </i>
+                    </i>
+                </div>
+                <div class="col-12"> New Property Value: </div> 				<input type="text" placeholder="£" class="col-12" style="margin-bottom:15px;">
+                <div class="col-12"> Existing Property Value:  </div> 				<input type="text" placeholder="£" class="col-12" style="margin-bottom:15px;">
+                <div class="col-12"> Existing Mortgage Balance: </div> 				<input type="text" placeholder="£" class="col-12" style="margin-bottom:15px;">
+                <div class="col-12"> Equity: <i> (Will all of this be used?) </i> </div> 	<input type="text" placeholder="£" class="col-12" style="margin-bottom:15px;">
+                <div class="col-12"> Deposit:  <i> (Where will this come from?) </i> </div> 	<input type="text" placeholder="£" class="col-12" style="margin-bottom:15px;">
+                <div class="col-12"> Borrowing amount: </div> <input type="text" placeholder="£" class="col-12 col-md-6">
+                <h5 class="col-12"> Property Description </h5>
+                <div class="col-12"> Property Type: <i> (Flat criteria) </i> </div> <input type="text" placeholder="Semi-detached, Bungalow, Flat etc..." class="col-12" style="margin-bottom:15px;">
+                <div class="col-12"> Tenure: </div> 	<input type="text" placeholder="Freehold/Leasehold" class="col-12" style="margin-bottom:15px;">
+                <div class="col-12"> Age: </div> 	<input type="text" placeholder="New build/ Previously owned" class="col-12" style="margin-bottom:15px;">
+                <div class="col-12"> Size: </div> 	<input type="text" placeholder="How many bedrooms..." class="col-12" style="margin-bottom:15px;">
+            </div>
+            <!-- Affordability assessment stuff -->
+            <div class="row col-12" style="padding:20px; margin: 10px; ">
+                <fieldset class="col-12 row" style="background-color:white; padding-bottom:10px;">
+                    <legend> <h5 class="col-12"> General Criteria </h5></legend>
+                    <div class="col-12"> <input type="checkbox"> Is the LTV within criteria? </div>
+                    <div class="col-12"> <input class="eligi-done" type="checkbox"> Will this be all applicants main residence? </div>
+                </fieldset>
+                <fieldset class="col-12 row affordability" style="margin-top:20px;background-color:white; padding-bottom:10px;">
+                    <legend> <h5 class="col-12"> Extended Criteria </h5> </legend>
+                    <div class="col-12"> <input type="checkbox"> Income paid in UK Sterling to UK bank account? </div>
+                    <b class="col-12"> Residency </b>
+                    <div class="col-6 col-md-2"> Adults: </div> 	<input type="number" placeholder="How many adults will reside..." class="col-6 col-md-4">
+                    <div class="col-6 col-md-2"> Children: </div> 	<input type="number" placeholder="How many children will reside..." class="col-6 col-md-4">
+                    <div class="col-12 col-md-6"> Repayment term: </div> <input type="text" placeholder="_yrs _ mths" class="col-12 col-md-6" style="margin-bottom:15px;">
+                    <div class="col-12 col-md-6"> Repayment type: <i> (I/O repayment vehicle?) </i> </div> <input type="text" placeholder="Capital & Interest or Interest Only..." class="col-12 col-md-6" style="margin-bottom:15px;">
+                    <div class="col-12 col-md-6"> Borrowing amount: </div> <input type="text" placeholder="£" class="col-12 col-md-6">
+                    <textarea class="col-12" style="margin-top:20px;" rows=3 placeholder="Additional info..."></textarea>
+                </fieldset>
+                <fieldset class="col-12 row new-cust" style="margin-top:20px;background-color:white; padding-bottom:10px;">
+                    <legend> <h5 class="col-12"> Property Purchase Criteria </h5> </legend>
+                    <div class="col-12"> <input type="checkbox"> Will both applicants reside in the UK at time of app. ? </div>
+                    <div class="col-12"> <input type="checkbox"> Borrowing more than needed for property purchase? </div>
+                    <div class="col-12"> <input type="checkbox"> Are any applicants first time buyers? </div>
+                    <div class="col-12"> <input type="checkbox"> Owned and lived in the property for 6 months? <i> (Remortgages) </i> </div>
+                </fieldset>
+                <fieldset class="col-12 row al-app pt-app toe-app" style="margin-top:20px;background-color:white; padding-bottom:10px;">
+                    <legend> <h5 class="col-12"> Variation Specific Criteria </h5> </legend>
+                    <div class="row al-app" style="padding:20px;">
+                        <b> Additional Borrowing</b>
+                        <div class="col-12"> <input type="checkbox"> Has the account been open for 6 months? </div>
+                        <div class="col-12"> <input type="checkbox"> £70 revaluation fee </div>
+                        <div class="col-12"> <input type="checkbox"> 85% LTV cap </div>
+                        <div class="col-12 col-md-6"> Behavioural Score: </div> <input ng-model="behaviour" type="number" placeholder="" class="col-12 col-md-6">
+                        <div class="col-12 col-md-6"> Borrowing Purpose: </div> <input ng-model="borrow_purp" type="text" placeholder="" class="col-12 col-md-6">
+                    </div>
+                    <div class="row toe-app" style="padding:20px;">
+                        <b> Transfer Of Equity </b>
+                        <div class="col-12"> <input type="checkbox"> All parties need independent legal representation </div>
+                        <div class="col-12"> <input type="checkbox"> All parties need to sign the application form </div>
+                        <div class="col-12"> <input type="checkbox"> Only the remaining applicant can check progress </div>
+                        <div class="col-12"> <input type="checkbox"> £180 non-refundable application fee </div>
+                        <div class="col-12"> <input type="checkbox"> Are things amicable? </div>
+                    </div>
+                    <div class="row pt-app" style="padding:20px;">
+                        <b> Product Transfer </b>
+                        <div class="col-12"> <input type="checkbox"> Any other changes? <i> (Additional Borrowing/ Type or Term amendments) </i> </div>
+                        <div class="col-12"> <input type="checkbox"> Have you chosen a new product? </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <!--Affordability-->
+        <div class="tab-pane container affor">
+            <h3> Affordability </h3>
+            <div class="row">
+                <div class="row col-12" style="padding:20px; margin: 10px; background-color:white;">
+                    <div> Are any applicants currently financially impacted by Covid-19? </div>
+                    <input type="text" placeholder="Furlough, risk of redundancy etc..." style="width:100%;">
+                    <div class="row" style="padding:4px;">
+                        <div class="col-5"> {{app1name}} Income Info: </div> 	<textarea ng-model="app1aff" class="col-6 app1aff" style="margin:4px;" rows=2 placeholder="Employed, Permanent, Full time..."></textarea>
+                        <div class="col-5"> {{app1name}} Outgoings Info: </div> <textarea ng-model="app1out" class="col-6 app1out" style="margin:4px;" rows=2 placeholder="Loans, Credit Cards, PCP's..."></textarea>
+                        <div class="col-5"> {{app2name}} Income Info: </div> 	<textarea ng-model="app2aff" class="col-6 app2aff" style="margin:4px;" rows=2 placeholder="Employed, Permanent, Full time..."></textarea>
+                        <div class="col-5"> {{app2name}} Outgoings Info: </div> <textarea ng-model="app2out" class="col-6 app2out" style="margin:4px;" rows=2 placeholder="Loans, Credit Cards, PCP's..."></textarea>
+                        <div class="col-3">Maximum Borrowing: </div> 	<input ng-model="max_borrow" class="col-9" type="text" placeholder="Up to £...">
+                        <div class="col-12" style="margin-top:10px;padding:12px;background-color: rgb(0,0,0,0.05);text-align:center;"> <input class="affo-done" type="checkbox"> <i> The amount you are looking to borrow [IS / ISNT] affordable based on the available information, however, this is subject to further lending criteria, a successful credit check and an appropriate valuation </i> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Approval In Principle-->
+        <div class="tab-pane container aip" style="font-size:16px;">
+            <h3> Approval In Principle </h3>
+            <div class="row">
+                <div class="row col-12" style="padding:20px; margin: 10px; background-color:white;">
+                    <p class="col-12"> <input type="checkbox"> Confirm the credit check statements </p>
+                    <p class="col-12"> <input type="checkbox"> Confirm decline rationale (where applicable) </p>
+                    <p class="col-12"> <input class="aip-done" type="checkbox"> Send the AIP email </p>
+                    <p class="col-12"> <b> Paperless applications will include the following; </b> </p>
+                    <p class="col-12" style="text-indent:50px;"> <input type="checkbox"> A guide to arranging your mortgage booklet </p>
+                    <p class="col-12" style="text-indent:50px;"> <input type="checkbox"> Income documentation guidance </p>
+                    <p class="col-12" style="text-indent:50px;"> <input type="checkbox"> A link to data privacy information </p>
+                    <p class="col-12" style="padding:15px; background-color:rgb(0,0,0,0.05) ;text-align:center;"> <input type="checkbox"> <i> It is important that you read these documents before your appointment, the MA will confirm your understanding when they carry out their recommendation </i> </p>
+                </div>
+            </div>
+        </div>
+
+        <!--Handover/Close-->
+        <div class="tab-pane container handclose">
+            <h3 class="col-12"> Handover/Close </h3>
+            <div class="row">
+                <div class="row col-12" style="padding:20px; margin: 10px; background-color:white;">
+                    <div class="col-12" style="text-align:center;margin-bottom:20px;"> Do I have your <input type="checkbox" class="hand-done"> <u>authority</u> to use your contact details to set up an appointment? </div>
+                    <div class="col-5"> <input type="checkbox"> Appointment time: </div> 	<input ng-model="appt_time" class="col-7" type="text" style="margin-bottom:10px;" placeholder="Monday 01/01/1990  17:00">
+                    <div class="col-5"> <input type="checkbox"> MA Name: </div> 		    <input ng-model="appt_name" class="col-7" type="text" style="margin-bottom:10px;" placeholder="Mort Adviserson">
+                    <div class="col-5"> <input type="checkbox"> Booking Reference: </div> 	<input ng-model="appt_ref" class="col-7" type="text" style="margin-bottom:10px;" placeholder="123456">
+                    <div class="col-12" style="margin-bottom:10px;"> <input type="checkbox"> Expect a text and/or email to confirm the appointment details</div>
+                    <div class="col-12" style="margin-bottom:10px;"> <input type="checkbox"> Purpose: To make a recommendation, costings quote, eligible products etc. </div>
+                    <div class="col-12" style="margin-bottom:10px;"> <input type="checkbox"> A courtesy/pre-assessment call may be delivered</div>
+                    <div class="col-12" style="margin-bottom:10px;"> <input type="checkbox"> RECAP: <i>"You called for X, CSR has done Y, now Z will happen" </i> </div>
+                    <div class="col-12" style="margin-bottom:10px;"> <input type="checkbox"> Have I covered everything? </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Checklist-->
+        <div class="tab-pane container notes">
+            <h3> Notes </h3>
+            <div class="row">
+                <div class="row col-12" style="padding:20px; margin: 10px; background-color:white;">
+                    <div class="row col-12">
+                        <p class="col-12"> <b> Checklist </b> </p>
+                        <div class="col-6 col-sm-4 col-lg-3"> <input type="checkbox" class="larger"> Live </div>
+                        <div class="col-6 col-sm-4 col-lg-3"> <input type="checkbox" class="larger"> ISIS </div>
+                        <div class="col-6 col-sm-4 col-lg-3"> <input type="checkbox" class="larger"> Appointment </div>
+                        <div class="col-6 col-sm-4 col-lg-3"> <input type="checkbox" class="larger"> Complaint </div>
+                        <div class="col-6 col-sm-4 col-lg-3"> <input type="checkbox" class="larger"> Email/AIP </div>
+                        <div class="col-6 col-sm-4 col-lg-3"> <input type="checkbox" class="larger"> Sharepoint </div>
+                        <div class="col-6 col-lg-3"> <input type="checkbox" class="larger"> Broker Relationship </div>
+                        <div class="col-6 col-lg-3"> <input type="checkbox" class="larger"> Customer Request </div>
+                    </div>
+                    <p class="col-12" style="text-align: center; padding-top:50px;"> <b> - Copy the below note - </b> </p>
+                    <div class="col-12" style="background-color: rgb(0,0,0,0.05);padding:20px;">
+                        <p class="note-line1"> <span style="text-transform:capitalize;"> {{app1name | lowercase}} {{app2name | lowercase}} </span> called to set up: <i class="space2"> </i> </p>
+                        <p class="note-line2"> Any urgent contextual info "Contact on X,Y,Z number for example..." <br> {{'Portability Ref: ' + portnum}} <i class="accord collapse"> {{'Broker relationship: ' + brokerRel}} </i> <i class="affordability"> {{'B/S: ' + behaviour}} <br /> {{'Purpose: ' + borrow_purp}} </i> </p>
+                        <p class="note-line3"> <i class="space"> </i> <i class="space1"> </i> <i class="space2"> </i> <i class="space3"> </i> <i class="space4"></i> <i class="space5"></i> <i class="space6" style="visibility:hidden"> {{'Appointment: ' + appt_time + ' ' + appt_name + ' ' + appt_ref}}</i> </p>
+                        <p class="note-line4"> <i class="space"> </i> <i class="space1"> </i> <i class="affordability"> Income and Outgoings; <br /> {{app1name}} <br /> {{app1aff}} <br /> {{app1out}} <br /> {{app2name}} <br /> {{app2aff}} <br /> {{app2out}} <br /> </i>  <i class="space2"> </i> <i class="space7"> </i><i class="space3"></i>  <i class="space4"></i> <i class="affordability"> {{'Max borrow: ' + max_borrow}} <br /> </i>  </p>
+                        <p class="note-line5"> Add any context that may be relevant or outstanding actions <br> i.e. call back/ complaint raised/ email sent etc. </p>
+                        <p class="note-line6"> Mark 82981 </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Notes Box-->
+    <div style="position:sticky; bottom:20px ; display: flex; justify-content: center; margin-top: 50px; margin-bottom: 100px; opacity:1;">
+        <fieldset style="background-color: white; border: 3px solid black;">
+            <h5 data-toggle="collapse" data-target="#next" style="padding:10px;background-color:rgb(0,25,50,0.1);"> NOTES + </h5>
+            <textarea id="next" class="collapse" style="margin:10px;" rows=10 cols=50 placeholder="Record any relevant information here..."></textarea>
+        </fieldset>
+    </div>
+
+</body>
