@@ -1,0 +1,120 @@
+body{background: linear-gradient(90deg, hsl(180, 1%, 90%), hsl(180, 10%, 80%), hsl(180, 1%, 80%) ); }
+header {color: teal;}
+h1, h2, h3, h4, h5 {font-family:arial; font-weight:600;}
+input {border-width:0px 0 1px 4px; border-color:teal; border-style: double; background-image:linear-gradient(to right, rgb(0,0,0,0.06), rgb(0,0,0,0.04), white); font-weight:600; margin-bottom:3px; margin-top: 3px;}
+
+input.larger { width: 20px; height: 20px; }
+
+nav .dropdown{ text-align:center;}
+nav .dropdown button{ background-color:white; border: none; margin-bottom:5px; padding-left:30px; padding-right: 30px;}
+nav .dropdown div p:hover{ background-color:teal; color: white;}
+
+
+/* SIDE NAVIGATION */
+.mySidenav a { background-color: teal ; position: absolute;  left: -200px;  transition: 0.3s;  padding: 15px;  width: 250px;   text-decoration: none;   font-size: 20px;  color: white;  border-radius: 0 5px 5px 0; z-index: 2;}
+.mySidenav a:hover {  left: 0;}
+#tab1 {  top: 250px;  filter:contrast(100%);}
+#tab1 span{visibility:hidden;}
+#tab2 {  top: 325px;  filter:grayscale(10%);}
+#tab2 span{visibility:hidden;}
+#tab3{  top: 400px;  filter:grayscale(20%);}
+#tab3 span{visibility:hidden;}
+#tab4 {  top: 475px;  filter:grayscale(30%);}
+#tab4 span{visibility:hidden;}
+#tab5 {  top: 550px; filter:grayscale(40%);}
+#tab5 span{visibility:hidden;}
+#tab6{  top: 625px;  filter:grayscale(50%);}
+#tab6 span{visibility:hidden;}
+#tab7 {  top: 700px;  filter:grayscale(60%);}
+#tab7 span{visibility:hidden;}
+#tab8 {  top: 775px;  filter:grayscale(70%);}
+#tab8 span{visibility:hidden;}
+
+/*functionality classes/id's*/
+.brand-list{}
+.variation-list{float:left;}
+
+.var-1 {}
+.var-2 {}
+.var-3 {}
+.var-4 {}
+.var-5 {}
+.var-6 {}
+.var-7 {}
+.is-used {}
+
+.new-cust {display:none;}
+.affordability {display:none;}
+.al-app {display:none;}
+.pt-app {display:none;}
+.toe-app {display:none;}
+
+.accord{}
+
+.cust-info {}
+.manda {}
+.man-acc-info{}
+.man-acc-info-end{}
+.man-acc-info-cont{}
+.recap {}
+.eligi {}
+.affor {}
+.aip {}
+.handclose {}
+.notes {}
+
+/* utility classes for passing info to notes */
+.app1name {}
+.app2name {}
+.app1dob {}
+.app2dob {}
+.app1verif {}
+.app2verif {}
+.app1aff {}
+.app2aff {}
+.app1out {}
+.app2out {}
+
+.acc-num {}
+.port-num {}
+
+.broker-rel {}
+
+.offer-accept {}
+
+.app1auth {}
+.app2auth {}
+
+.behaviour {}
+.borrow-purp {}
+.max-borrow {}
+
+.manda-done {}
+.recap-done {}
+.eligi-done {}
+.affo-done {}
+.aip-done {}
+
+.appt-time {}
+.appt-name {}
+.appt-ref {}
+
+.note-line1 {}
+.note-line2 {}
+.note-line3 {}
+.note-line4 {}
+.note-line5 {}
+.note-line6 {}
+.space {}
+.space1 {}
+.space2 {}
+.space3 {}
+.space4 {}
+.space5 {}
+.space6 {}
+.space7 {}
+
+/*brands*/
+.type1 {}
+.type2 {}
+.type3 {}
