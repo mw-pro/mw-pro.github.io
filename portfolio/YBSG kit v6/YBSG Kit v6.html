@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="ybsgv6.css">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>YBSG Kit version 6</title>  
+</head>
+
+
+<body>
+
+    <div ng-app="kit" ng-controller="kitCtrl">
+
+        <!-- HEADER -->
+        <div class="header-main-container">
+           
+            <!-- BUTTONS -->
+            <div class="header-button-container" ng-style="brand.YBSactive && {'background': 'green'} || brand.CBSactive && {'background': 'red'} || brand.ACCactive && {'background': 'orange'}"> 
+                <Button style="background: rgb(0, 90, 0); color: white; border-radius: 7px; " ng-click="toggleYbs()">YBS</Button>
+                <Button style="background: rgb(177, 0, 0); color: white; border-radius: 7px;" ng-click="toggleCbs()">CBS</Button>
+                <Button style="background: rgb(218, 145, 12); border-radius: 7px;" ng-click="toggleAcc()">Accord</Button>
+            </div>
+
+            <!-- VARIATIONS MAIN CONTAINER -->
+            <div class="row header-variations-main-container">
+
+                <!-- VARIATIONS AND ACCOUNT NUMBER CONTAINER -->
+                <div class="col-12 col-md-6" style="text-align: center;">
+
+                    <!-- VARIATIONS -->
+                    <h4 >Choose variation:</h4>
+                    <div class="header-Variation">
+                        
+                        <!-- the checkboxes are set into two categories, to identify property purchases and account amendments -->
+                        <div class="just-between">
+                            <span class="aligned"> HP: <input type="checkbox" name="HP" ng-disabled="brand.ACCactive || variation.REM || variation.PORT || variation.AL || variation.PT || variation.TOE || variation.TT" ng-click="toggleHP()"> </span>
+                            <span class="aligned"> REM: <input type="checkbox" name="REM" ng-disabled="brand.ACCactive || variation.HP || variation.PORT || variation.AL || variation.PT || variation.TOE || variation.TT" ng-click="toggleREM()"> </span> 
+                            <span class="aligned"> PORT: <input type="checkbox" name="PORT" ng-disabled="variation.HP || variation.REM || variation.AL || variation.PT || variation.TOE || variation.TT" ng-click="togglePORT()"> </span>
+                        </div>  
+
+                        <div class="just-between">  
+                            <span class="aligned"> AL: <input type="checkbox" name="ADD" ng-disabled="variation.HP || variation.REM || variation.PORT" ng-click="toggleAL()"> </span>
+                            <span class="aligned"> PT: <input type="checkbox" name="PRO" ng-disabled="variation.HP || variation.REM || variation.PORT || variation.TOE" ng-click="togglePT()"> </span>
+                            <span class="aligned"> TOE: <input type="checkbox" name="TOE" ng-disabled="variation.HP || variation.REM || variation.PORT || variation.PT" ng-click="toggleTOE()"> </span>
+                            <span class="aligned"> T/T: <input type="checkbox" name="TYP" ng-disabled="variation.HP || variation.REM || variation.PORT" ng-click="toggleTT()"> </span>
+                        </div>
+
+                    </div>
+
+                    <!-- ACCOUNT REFERENCES -->
+                    <div class="header-Account" >
+
+                        <span> 
+                            <b>Account #</b> 
+                            {{ accnum }}
+                        </span>
+
+                        <span ng-show="portnum"> 
+                            <b>Porting #</b> 
+                            {{ portnum }}
+                        </span>
+
+                    </div>
+                    
+                </div>
+                
+                <!-- CUSTOMER DETAILS CONTAINER -->
+                <div class="col-12 col-md-6" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+                    
+                    <!-- FIRST CUSTOMER-->
+                    <div ng-show="app1name" style="display: flex; flex-direction: column; padding: 2px;">
+
+                        <p style="font-weight: 100; display: flex; flex-wrap:wrap">
+                            <a href="#a1cont" data-toggle="collapse" style="color: white; padding-right: 5px;">	
+                                &#9660; 1st Account holder: 
+                            </a>
+                            <span style="white-space:pre-wrap; font-family: monospace; font-weight: 900; text-transform: capitalize;">{{app1name | lowercase}}</span> 
+                        </p>
+
+                        <!-- CONTACT DETAILS-->
+                        <div id="a1cont" class="collapse">
+                            <div style="display: flex; flex-direction: column; justify-content: space-between; padding: 5px; border-radius: 5px; background: rgba(6, 29, 29, 0.438);">
+                                <span>{{app1mob}}</span>
+                                <span>{{app1email}}</span>
+                                <span>{{app1dob}}</span>
+                                <span>{{app1post}}</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--SECOND CUSTOMER-->
+                    <div ng-show="app2name" style="display: flex; flex-direction: column; padding: 2px; ">
+
+                        <p style="font-weight: 100; display: flex; flex-wrap:wrap">
+                            <a href="#a2cont" data-toggle="collapse" style="color: white; padding-right: 5px;">	
+                                &#9660; 2nd Account holder: 
+                            </a>
+                            <span style="white-space:pre-wrap; font-family: monospace; font-weight: 900; text-transform: capitalize;">{{app2name | lowercase}}</span>  
+                        </p>
+                        
+                        <!-- CONTACT DETAILS-->
+                        <div id="a2cont" class="collapse" >
+                            <div style="display: flex; flex-direction: column; justify-content: space-between; padding: 5px; border-radius: 5px; background: rgba(6, 29, 29, 0.438);">
+                                <span>{{app2mob}}</span>
+                                <span>{{app2email}}</span>
+                                <span>{{app2dob}} </span>
+                                <span>{{app2post}} </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--MAIN HUB CONTAINER-->
+        <div style="padding:20px; min-height: 815px;  background:linear-gradient(135deg, lightgrey, rgb(236, 226, 205), rgba(255, 217, 0, 0.288) )">
+            
+            <!--MAIN HUB-->
+            <div class="row" style="display: flex; min-height: 750px; margin: 20px; background: rgba(17, 69, 90, 0.384);">
+                               
+                <!--NAVIGATION BAR-->
+                <ul class="nav nav-tabs col-12 col-lg-1" style="display: flex; justify-content: center; font-family: monospace; border: none; padding-top: 10px; height:fit-content;">
+                    
+                    <!-- CUSTOMER INFO -->
+                    <li class="nav-item" title="Applicant Information">
+                        <a class="nav-link active" data-toggle="tab" href="#custInfo">
+                            <img src="images/customerIcon.png">
+                        </a>
+                    </li>
+
+                    <!-- MANDATORIES -->
+                    <li class="nav-item" title="Mandatory Statements">
+                        <a class="nav-link" data-toggle="tab" href="#manda">
+                            <img src="images/mandatoryIcon.png" >
+                        </a>
+                    </li>
+
+                    <!-- ACCOUNT RECAP -->
+                    <li class="nav-item" title="Account Recap">
+                        <a class="nav-link" data-toggle="tab" href="#recap" ng-hide="variation.HP || variation.REM">
+                            <img src="images/recapIcon.png" >
+                        </a>
+                    </li>
+
+                    <!-- ELIGIBILITY -->
+                    <li class="nav-item" title="Eligibility Assessment">
+                        <a class="nav-link" data-toggle="tab" href="#eligi">
+                            <img src="images/eligibilityIcon.png">
+                        </a>
+                    </li>
+
+                    <!-- AFFORDABILITY -->
+                    <li class="nav-item" title="Affordability Assessment">
+                        <a class="nav-link" data-toggle="tab" href="#affor" ng-hide="variation.PT" ng-show="variation.PT && variation.AL || variation.TT">
+                            <img src="images/affordabilityIcon.png" >
+                        </a>
+                    </li>              
+
+                    <!-- APPROVAL IN PRINCIPLE -->
+                    <li class="nav-item" title="Approval In Principle">
+                        <a class="nav-link" data-toggle="tab" href="#aip" ng-hide="variation.PT || variation.AL || variation.TOE || variation.TT">
+                            <img src="images/aipIcon.png">
+                        </a>
+                    </li>
+
+                    <!-- APPOINTMENT -->
+                    <li class="nav-item" title="Appointment Details">
+                        <a class="nav-link" data-toggle="tab" href="#appoint"> 
+                            <img src="images/appointIcon.png"> 
+                        </a>
+                    </li>
+
+                    <!-- NOTES -->
+                    <li class="nav-item" title="Notes">
+                        <a class="nav-link" data-toggle="tab" href="#notes">
+                            <img src="images/notesIcon.png">
+                        </a>
+                    </li>
+                </ul>
+
+                <!--NAVIGATION TABS-->
+                <div class="tab-content container-fluid col-12 col-lg-11" style="padding: 10px; min-height: 650px; ">
+
+                    <!-- CUSTOMER INFO-->
+                    <div class="tab-pane container active" id="custInfo" style="min-height:100%;">
+                        
+                        <h3>Account Holder Information</h3>
+                        
+                        <!-- FORM CONTAINER-->
+                        <div style="display: flex; min-height: 550px; background: rgba(255, 255, 255, 0.5);">
+
+                            <form style="width: 100%;">
+
+                                <!-- ACCOUNT REFERENCES-->
+                                <div id="appForm" style="width: 100%; margin-top: 10px; display: flex; justify-content: space-evenly;">
+                                    <input type="text" ng-model="accnum" placeholder="Account number..." style="width: 150px;">
+                                    <input type="text" ng-model="portnum" placeholder="Porting ref..." style="width: 150px;">
+                                </div>
+
+                                <!-- APPLICANT INFO CONTAINER -->
+                                <div style="height: 90%; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
+                                    
+                                    <!-- APPLICANT 1 INFO -->
+                                    <div style="max-width: 450px; margin: 20px; padding: 20px; background: rgba(0, 128, 128, 0.356);">
+
+                                        <fieldset>
+
+                                            <!-- TITLE -->
+                                            <legend style="display: flex; align-items: baseline; justify-content: center; font-weight: bold;">
+                                                First Account Holder 
+                                                <!-- app1active isn't used in this program, but it may become relevant depending on how I plan to use the system -->
+                                                <input type="checkbox" style="display: none;" ng-model="app1active">
+                                            </legend>
+
+                                            <!-- ENTRY SECTION-->
+                                            <div id="appForm" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+                                                
+                                                <input type="text" ng-model="app1name" style="min-width: 350px;" placeholder="Name..." required>
+                                                
+                                                <div style="width: 350px; display: flex; justify-content: space-between; padding-top: 10px; padding-bottom: 10px;">
+                                                    <input type="text" ng-model="app1dob" style="width: 100px;" placeholder="D.O.B*" required>
+                                                    <input type="text" ng-model="app1post" style="width: 100px;" placeholder="Postcode*" required>
+                                                    <input type="text" ng-model="app1mob" style="width: 100px;" placeholder="Mobile*" required>
+                                                </div>
+
+                                                <input type="text" ng-model="app1email" style="width: 350px;" placeholder="Email address*" required>
+
+                                                <div style="width:350px; display: flex; justify-content: space-between; padding-top: 15px;">
+                                                    <p style="display: flex; align-items: center;">Verified: <input type="checkbox" ng-model="app1verif"></p> 
+                                                    <p style="display: flex; align-items: center;">Check contacts: <input type="checkbox"></p> 
+                                                </div>
+
+                                            </div>
+
+                                        </fieldset>
+
+                                    </div>
+
+                                    <!-- APPLICANT 2 INFO -->
+                                    <div style="max-width: 450px; margin: 20px; padding: 20px; background: rgba(0, 128, 128, 0.356);">
+
+                                        <fieldset>
+                                            <!-- TITLE -->
+                                            <legend style="display: flex; align-items: baseline; justify-content: center; font-weight: bold;">
+                                                Second Account Holder 
+                                                <!-- app2active isn't used in this program, but it may become relevant depending on how I plan to use the system -->
+                                                <input type="checkbox" style="display: none;" ng-model="app2active">
+                                            </legend>
+
+                                            <!-- ENTRY SECTION-->
+                                            <div id="appForm" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+                                                
+                                                <input type="text" ng-model="app2name" style="width: 350px;" placeholder="Name..." required>
+                                                
+                                                <div style="width: 350px; display: flex; justify-content: space-between; padding-top: 10px; padding-bottom: 10px;">
+                                                    <input type="text" ng-model="app2dob" style="width: 100px;" placeholder="D.O.B*" required>
+                                                    <input type="text" ng-model="app2post" style="width: 100px;" placeholder="Postcode*" required>
+                                                    <input type="text" ng-model="app2mob" style="width: 100px;" placeholder="Mobile*" required>
+                                                </div>
+
+                                                <input type="text" ng-model="app2email" style="width: 350px;" placeholder="Email address*" required>
+
+                                                <div style="width:350px; display: flex; justify-content: space-between; padding-top: 15px;">
+                                                    <p style="display: flex; align-items: center;">Verified: <input type="checkbox" ng-model="app2verif"></p> 
+                                                    <p style="display: flex; align-items: center;">Check contacts: <input type="checkbox"></p> 
+                                                </div>
+
+                                            </div>
+
+                                        </fieldset>
+
+                                    </div>
+                                    
+                                </div>
+
+                            </form>
+
+                        </div>
+                        
+                    </div>
+
+                    <!-- MANDATORIES -->
+                    <div class="tab-pane container" id="manda">
+                        
+                        <h3>Mandatory Statements</h3>
+
+                        <!-- INNER CONTAINER-->
+                        <div style="display: flex; flex-wrap: wrap; padding: 20px; background: rgba(255, 255, 255, 0.5);">
+
+                            <!-- STANDARD REQS -->
+                            <div style="margin-bottom: 30px;">
+                                <h5>Standard Requirements;</h5>
+                                <p ng-repeat="x in pull1" style="display: flex; align-items: center;"> 
+                                    <input type="checkbox">
+                                    {{x}} 
+                                </p> 
+                            </div>
+
+                            <!-- PROPERTY PURCHASE REQS -->
+                            <div style="margin-bottom: 30px;" ng-show="variation.HP || variation.PORT || variation.REM" >
+                                <h5>Completing a property purchase;</h5>
+                                <p ng-repeat="x in pull2" style="display: flex; align-items: center;"> 
+                                    <input type="checkbox">
+                                    {{x}} 
+                                </p> 
+                            </div>
+
+                            <!-- ACCORD CUSTOMER REQS -->
+                            <div style="margin-bottom: 30px;" ng-show="brand.ACCactive">
+                               
+                                <h5>Accord Customers;</h5>
+
+                                <p ng-repeat="x in pull3" style="display: flex; align-items: center;"> 
+                                    <input type="checkbox">
+                                    {{x}} 
+                                </p>
+
+                                <!-- BROKER RELATIONSHIP -->
+                                <div>
+
+                                    <div style="width:100%; display: flex; justify-content: space-around;">
+                                        <button data-toggle="collapse" data-target="#endRel" style="background: inherit; border: black solid 1px; border-radius: 3px; border-left: 0; border-right: 0;"> END the relationship </button>
+                                        <button data-toggle="collapse" data-target="#contRel" style="background: inherit; border: black solid 1px; border-radius: 3px; border-left: 0; border-right: 0;"> CONTINUE the relationship </button>
+                                    </div>
+
+                                    <p id="endRel" class="collapse" style="font-weight: bold; text-align: center; padding-top: 20px;">
+                                        Check on 'Activity Players'
+                                    </p>
+
+                                    <p id="contRel" class="collapse" style="font-weight: bold; text-align: center; padding-top: 20px;">
+                                        Check on 'Activity Players' <br>
+                                        'accord_complaints@accordmortgages.com'
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ACCOUNT RECAP -->
+                    <div class="tab-pane container" id="recap" ng-hide="variation.HP || variation.REM">
+                        
+                        <h3>Account Recap</h3>
+
+                        <!-- INNER CONTAINER-->
+                        <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly; padding: 20px; background: rgba(255, 255, 255, 0.5);">
+                            
+                            <!-- INTERNAL CHECK -->
+                            <div style="margin-bottom: 30px;">
+                                <h5>Internal checks;</h5>
+                                <p ng-repeat="x in pull4" style="display: flex; align-items: center;">
+                                    <input type="checkbox">
+                                    {{x}}
+                                </p>
+                                Loan to Value: <input type="number" style=" width: 45px; background: inherit; border: none; border-bottom: solid black 1px; font-family: monospace; " placeholder="%">
+                            </div>
+
+                            <!-- CONFIRMED INFORMATION-->
+                            <div style="margin-bottom: 30px;">
+                                <h5>Confirm the following to customer;</h5>
+                                <p ng-repeat="x in pull5" style="display: flex; align-items: center;">
+                                    <input type="checkbox">
+                                    {{x}}
+                                </p>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+
+                    <!-- ELIGIBILITY ASSESSMENT -->
+                    <div class="tab-pane container" id="eligi">
+
+                        <h3>Eligibility Assessment</h3>
+
+                        <!-- INNER CONTAINER-->
+                        <div style="padding: 20px; background: rgba(255, 255, 255, 0.5);">
+                            
+                            <!-- GENERAL CRITERIA -->
+                            <div style="margin-bottom: 30px;">
+                                <h5>General Criteria</h5>
+                                <p ng-repeat="x in pull6" style="display: flex; align-items: center;"> 
+                                    <input type="checkbox">
+                                    {{x}}
+                                </p>
+                            </div>
+
+                            <!-- PROPERTY PURCHASE CRITERIA -->
+                            <div style="margin-bottom: 30px;" ng-show="variation.HP || variation.REM || variation.PORT">
+                                
+                                <h5>Property Purchase Criteria</h5>
+
+                                <!-- SPECIFIC CRITERIA QUESTIONS-->
+                                <p ng-repeat="x in pull7" style="display: flex; align-items: center;">
+                                    <input type="checkbox">
+                                    {{x}}
+                                </p>
+
+                                <p style="display: flex; align-items: center;" ng-hide="variation.PORT"> 
+                                    <input type="checkbox">
+                                    Will all applicants reside in the UK at the time of application?
+                                </p>
+                                
+                                <p style="display: flex; align-items: center;" ng-hide="variation.HP"> 
+                                    <input type="checkbox">
+                                    Is the new loan amount higher than their existing mortgage?
+                                </p>
+
+                                <p style="display: flex; align-items: center;" ng-hide="variation.REM"> 
+                                    <input type="checkbox" ng-model="offer">
+                                    Has an offer been accepted?
+                                </p>
+
+                                <p style="display: flex; align-items: center;" ng-hide="variation.HP"> 
+                                    <input type="checkbox">
+                                    Have all applicants lived in and owned the property for 6 months?
+                                </p>
+
+                                <!-- PROPERTY CALC -->
+                                <div id="propCalc" style="margin: 10px; padding: 15px;text-align: center; background: rgba(255, 255, 255, 0.5);">
+                                    
+                                    <i>Enter values into the appropriate fields below...</i> <br>
+
+                                    <table style="width: 100%;">
+
+                                        <tr>
+                                            <th></th>
+                                            <th ng-hide="variation.REM"> New Property</th>
+                                            <th ng-hide="variation.HP"> Existing Property</th>
+                                        </tr>
+
+                                        <tr>
+                                            <th>Property Value:  </th>
+                                            <td ng-hide="variation.REM"><input type="number" ng-model="newProp" placeholder="£ 0"></td>
+                                            <td ng-hide="variation.HP"><input type="number" ng-model="oldProp" placeholder="£ 0"></td>
+                                        </tr>
+
+                                        <tr ng-hide="variation.HP">
+                                            <th>Mortgage Balance: </th>
+                                            <td ng-hide="variation.REM" style="visibility: hidden;">.</td>
+                                            <td ng-hide="variation.HP"><input type="number" ng-model="balance" placeholder="£ 0"></td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>Customer Payment: </th>
+                                            <td><input type="number" ng-model="deposit" placeholder="Deposit:"></td>
+                                            <td ng-hide="variation.HP"><input type="number" ng-model="equity" placeholder="Equity: {{oldProp - balance | currency:'£'}}"></td>
+                                        </tr>
+
+                                    </table>
+                                    
+                                    <p style="margin-top: 15px;font-weight: bold;"> Loan amount required: <i>{{newProp - deposit | currency:'£'}}</i> </p>
+
+                                </div>
+
+                            </div>
+                            
+                            <!-- EXTENDED CRITERIA -->
+                            <div style="margin-bottom: 30px;" ng-show="variation.HP || variation.REM || variation.PORT || variation.AL || variation.TOE || variation.TT">
+
+                                <h5>Extended Criteria </h5>
+
+                                <!--SPECIFIC QUESTIONS-->
+                                <p style="display: flex; align-items: center;">
+                                    <input type="checkbox" >
+                                    Income paid in UK Sterling in to a UK bank account?
+                                </p>
+
+                                <!--REPAYMENT TERM-->
+                                <p style="display: flex; align-items: center;"> 
+                                    Repayment Term:
+                                    <input type="text" placeholder="20y 0m " ng-model="term" style="background: inherit; border: none; border-bottom: solid black 1px; font-family: monospace; width: 100px;">
+                                </p>
+
+                                <!-- REPAYMENT TYPE -->
+                                <p> 
+
+                                    <!--RADIO BUTTONS-->
+                                    <form>
+                                        Repayment Type:
+                                        <input type="radio" ng-model="reType" value="io">Int Only
+                                        <input type="radio" ng-model="reType" value="ci">Cap & Interest
+                                    </form>
+
+                                    <!-- INTEREST ONLY -->
+                                    <div ng-switch="reType" style="padding-top: 15px;">
+                                        <div ng-switch-when="io">
+                                           <p>What repayment strategy was identified?: </p>
+                                            <!-- ng.model is set up as $parent.(identifier) due to a problem with inheritance when trying to bind data inside an ng.switch-->
+                                           <textarea cols="20" ng-model="$parent.intOnly" style="width: 100%;"> </textarea>
+                                        </div>
+                                    </div>
+
+                                </p>
+
+                            </div>
+
+                            <!-- ADDITIONAL LENDING CRITERIA -->
+                            <div style="margin-bottom: 30px;" ng-show="variation.AL">
+
+                                <h5>Additional Lending Criteria</h5>
+
+                                <p ng-repeat="x in pull8" style="display: flex; align-items: center;">
+                                    <input type="checkbox">
+                                    {{x}}
+                                </p>
+
+                                <!-- BEHAVIOURAL SCORE -->
+                                <p>
+                                    Behavioural Score:
+                                    <input type="text" ng-model="behav" style="background: inherit; border: none; border-bottom: black solid 1px; font-family: monospace; width: 45px;">
+                                </p>
+
+                                <!-- BORROWING AMOUNT -->
+                                <p>
+                                    Borrowing Amount:
+                                    <input type="number" ng-model="alValue" placeholder="£" style="background: inherit; border: none; border-bottom: black solid 1px; font-family: monospace; width: 100px;">
+                                </p>
+                                
+                                <!-- BORROWING PURPOSE -->
+                                <p>
+                                    Borrowing Purpose:
+                                    <input type="text" ng-model="alPurp" placeholder="keep it brief..." style="background: inherit; border: none; border-bottom: black solid 1px; font-family: monospace; width: 200px;">
+                                </p>
+
+                            </div>
+
+                            <!-- TRANSFER OF EQUITY CRITERIA -->
+                            <div style="margin-bottom: 30px;" ng-show="variation.TOE">
+                                <h5>Transfer of Equity Criteria </h5>
+                                <p ng-repeat="x in pull9"  style="display: flex; align-items: center;">
+                                    <input type="checkbox">
+                                    {{x}}
+                                </p>
+                            </div>
+                            
+                            <!-- PRODUCT TRANSFER CRITERIA -->
+                            <div style="margin-bottom: 30px;" ng-show="variation.PT">
+                                <h5>Product Transfer Criteria </h5>
+                                <p ng-repeat="x in pull10" style="display: flex; align-items: center">
+                                    <input type="checkbox">
+                                    {{x}}
+                                </p>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+
+                    <!-- AFFORDABILITY ASSESSMENT -->
+                    <div class="tab-pane container" id="affor" ng-hide="variation.PT" ng-show="variation.PT && variation.AL || variation.TT">
+                        <h3>Affordability Assessment</h3>
+
+                        <!-- INNER CONTAINER-->
+                        <div style="padding: 20px; background: rgba(255, 255, 255, 0.5);">
+                            
+                            <p style="text-align: center;"> Are any applicants currently financially impacted by Covid-19?</p>
+
+                            <!-- INCOME/EXPENDITURE CONTAINER -->
+                            <div style="display: flex; flex-wrap: wrap; justify-content: space-around; text-align: center;">
+
+                                <!-- APPLICANT 1 INFO-->
+                                <div>
+                                    <p ng-show="app1name">
+                                        <span style="text-transform: capitalize;"> 
+                                            {{app1name | lowercase}} 
+                                        </span> 
+                                        details;
+                                    </p>
+                                    <textarea ng-model="app1affo" cols="45" rows="5" placeholder="Emp, Perm, Full time, (Job title) etc..."></textarea>
+                                </div>
+
+                                <!-- APPLICANT 2 INFO-->
+                                <div ng-show="app2name">
+                                    <p><span style="text-transform: capitalize;"> {{app2name | lowercase}} </span> details;</p>
+                                    <textarea ng-model="app2affo" cols="45" rows="5" placeholder="Emp, Perm, Full time, (Job title) etc..."></textarea>
+                                </div>
+
+                                <!-- BORROWING INFORMATION-->
+                                <div>
+
+                                    <!-- SUB SECTION SHOWING AMOUNT REQUESTED, WILL APPEAR ABOVE THE MAX BORROW DISPLAY-->
+                                    <p style="font-weight: bold;" ng-show="variation.AL"> 
+                                        Amount requested: {{alValue | currency:'£'}} 
+                                    </p>
+
+                                    <!-- SUB SECTION SHOWING AMOUNT REQUESTED, WILL APPEAR ABOVE THE MAX BORROW DISPLAY-->
+                                    <p style="font-weight: bold;" ng-show="variation.HP || variation.REM || variation.PORT"> 
+                                        Amount requested: {{ newProp - deposit | currency:'£'}} 
+                                    </p>
+
+                                    <!-- MAX BORROWING-->
+                                    <p>
+                                        Max Borrowing: 
+                                        <input type="text" ng-model="maxBorrow" style="background: inherit; border: none; border-bottom: black solid 2px; font-family: monospace;">
+                                    </p>
+
+                                    <!-- MANDATORY STATEMENT -->
+                                    <p style="padding: 10px; background:rgba(255, 255, 255, 0.5); text-align: center;"> 
+                                        <input type="checkbox" >
+                                        <br>
+                                        The amount you are looking to borrow [IS / ISNT] affordable based on the available information, 
+                                        however, this is subject to <b>further lending criteria</b>, 
+                                        a <b>successful credit check</b> and 
+                                        an <b>appropriate valuation</b>
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        
+                    </div>
+
+                    <!-- APPROVAL IN PRINCIPLE -->
+                    <div class="tab-pane container" id="aip" ng-hide="variation.PT || variation.AL || variation.TOE || variation.TT">
+                        
+                        <h3>Approval In Principle</h3>
+
+                        <!-- INNER CONTAINER-->
+                        <div style="text-align: center; padding: 20px; background: rgba(255, 255, 255, 0.5);">
+                            
+                            <!-- APPROVAL IN PRINCIPLE INFO-->
+                            <div style="display: flex; justify-content: space-around;">
+
+                                <!-- CONTAINER FOR QUESTIONS-->
+                                <div>
+                                    <p ng-repeat="x in pull11" style="display: flex; align-items: center;">
+                                        <input type="checkbox">
+                                        {{x}}
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <!--PAPERLESS INFO-->
+                            <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+
+                                <h4 style="font-weight: bold; margin-bottom: 10px; width: 100%;">
+                                    Paperless emails include the following;
+                                </h4>
+
+                                <div style="padding: 10px;">
+                                    <p ng-repeat="x in pull12" style="display: flex; align-items: center;">
+                                        <input type="checkbox">
+                                        {{x}}
+                                    </p>
+                                </div>
+                                
+                                <p style="max-width: 400px; text-align: center; font-style: italic; background:rgba(255, 255, 255, 0.5); padding: 10px;">
+                                    It is important that you read these documents before your appointment, 
+                                    the MA will confirm your understanding when they carry out their recommendation
+                                    <br> <input type="checkbox"> 
+                                </p>
+
+                            </div>
+
+                        </div>
+                        
+                    </div>
+                    
+                    <!-- APPOINTMENT DETAILS -->
+                    <div class="tab-pane container" id="appoint">
+                        <h3>Appointment Details</h3>
+
+                        <!-- INNER CONTAINER-->
+                        <div style="padding: 20px; background: rgba(255, 255, 255, 0.5);">
+                                                    
+                            <p style="display: flex; align-items: center;"> 
+                                <input type="checkbox"> 
+                                Do I have your authority to use your contact details to set up an appointment?
+                            </p>
+
+                            <!--BOOKING DETAILS-->
+                            <table style="margin-bottom: 30px; margin-left: auto; margin-right: auto;">
+                                <tr>
+                                    <td style="padding: 10px;">Appointment Time: </td>
+                                    <td style="padding: 10px;"><input type="text" placeholder="Monday dd/mm/yyyy 00:00" ng-model="appTime" style="border: none; border-bottom: solid black 2px; font-family: monospace; width: 220px;"> </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td style="padding: 10px;">Mortgage Advisor: </td>
+                                    <td style="padding: 10px;"><input type="text" placeholder="Phil Mitchell..." ng-model="advisorName" style="border: none; border-bottom: solid black 2px; font-family: monospace; width: 220px;"> </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td style="padding: 10px;">Booking Reference: </td>
+                                    <td style="padding: 10px;"><input type="text" placeholder="000111" ng-model="appRef" style="border: none; border-bottom: solid black 2px; font-family: monospace; width: 220px;"> </td>
+                                </tr>
+                            </table>
+
+                            <!-- DETAILS TO BE CONFIRMED AFTER BOOKING-->
+                            <p ng-repeat="x in pull13" style="display: flex; align-items: center;">
+                                <input type="checkbox">
+                                {{x}}
+                            </p>
+
+                        </div>
+                        
+                    </div>
+
+                    <!-- NOTES -->
+                    <div class="tab-pane container" id="notes">
+                        <h3>Notes</h3>
+
+                        <!-- INNER CONTAINER-->
+                        <div class="row" style="margin: 0px; display: flex; flex-wrap: wrap; justify-content: space-around; padding: 20px; background: rgba(255, 255, 255, 0.5);">
+                            
+                            <!-- CHECKLIST-->
+                            <div class="col-12 col-lg-4 col-xl-3" style="display: flex; flex-wrap: wrap; justify-content: space-evenly;">
+
+                                <p ng-repeat="x in pull14" style="width: 170px; display: flex; align-items: center;">
+                                    <input type="checkbox">
+                                    {{x}}
+                                </p>
+
+                            </div>
+
+                            <!-- NOTES TEMPLATE! -->
+                            <div class="col-12 col-lg-8 col-xl-9" style="padding: 15px; font-size: medium; font-family: monospace; background:rgba(255, 255, 255, 0.5);">
+                                
+                                <!-- CUSTOMER INFORMATION-->
+                                <div> 
+                                    {{app1name}} 
+                                    <span ng-show="app1name && app2name"> and</span> 
+                                    {{app2name}} 
+                                    called to do a : 
+                                    <span ng-show="variation.HP" > House Purchase </span>
+                                    <span ng-show="variation.REM" > Remortgage </span>
+                                    <span ng-show="variation.PORT" > Portability </span>
+                                    <span ng-show="variation.PT" > Product Transfer </span>
+                                    <span ng-show="variation.AL" > Additional Borrowing </span>
+                                    <span ng-show="variation.TOE" > Transfer of Equity </span>
+                                    <span ng-show="variation.TT" > Type or Term Change </span>
+                                </div>
+
+                                <!-- GENERAL CRITERIA-->
+                                <div>
+
+                                    Verified 
+                                    Mandatories done
+                                    <span ng-hide="variation.HP || variation.REM "> Account recapped </span>
+                                    Eligibility done
+                                    <span ng-hide="variation.PT"> Affordability done </span>
+                                    <span ng-hide="variation.PT || variation.AL || variation.TOE || variation.TT"> Approval In Principle done</span>
+
+                                    <!-- APPT INFO -->
+                                    <span ng-show="advisorName">
+                                        <br>
+                                        Appointment booked with {{advisorName}}, at {{appTime}}, REF: {{appRef}}
+                                    </span>
+
+                                </div>
+
+                                <!-- VARIATION SPECIFIC -->
+                                <div>
+
+                                    <p ng-show="portnum"> 
+                                        Portability Ref: 
+                                        {{portnum}}
+                                    </p>
+
+                                    <p ng-show="offer">
+                                        Offer accepted
+                                    </p>
+                                    
+                                    <p ng-show="variation.AL"> 
+                                        B/S: {{behav}} <br>
+                                        Amount: {{alValue | currency:'£'}} <br>
+                                        Purpose: {{alPurp}} <br>
+                                        Max borrowing: {{maxBorrow}}
+                                    </p>
+
+                                    <p ng-show="variation.TT || variation.HP || variation.REM || variation.PORT">
+                                        <span ng-hide="variation.HP">New Term: {{term}} <br></span>
+
+                                        <!-- PULLING INFO FROM ELIGIBILITY SECTION-->
+                                        <span ng-switch="reType">
+                                            <span ng-switch-when="io">
+                                                Repayment vehicle: {{intOnly}}
+                                            </span> 
+                                        </span>
+
+                                    </p>
+
+                                </div>
+
+                                <!-- AFFORDABILITY -->
+                                <div ng-show="variation.HP || variation.REM || variation.PORT || variation.AL || variation.TOE || variation.TT">
+
+                                    <!-- APP 1 DETAILS -->
+                                    <div ng-show="app1name"> 
+                                        {{app1name}}'s details: <br>
+                                        {{app1affo}}
+                                    </div>
+
+                                    <!-- APP 2 DETAILS -->
+                                    <div ng-show="app2name">
+                                        {{app2name}}'s details: <br>
+                                        {{app2affo}}
+                                    </div>
+
+                                </div>
+
+                                <!-- ANY OTHER RELEVANT INFORMATION -->
+                                <p style="padding: 12px;">
+                                    Don't forget to include any relevant information! <br>
+                                </p>
+
+                                {{notePad}} <br>
+                                
+                                Mark 82981
+
+                            </div>
+
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- NOTE BOX -->
+        <div id="draggable">
+            
+            <!-- DRAGGABLE ELEMENT -->
+            <div id="draggableItem">
+
+                <button data-toggle="collapse" data-target="#notepad" class="notepad-button">
+                    <span>NOTE PAD</span>
+                </button>
+
+            </div>
+
+            <!-- EXPANDABLE ELEMENT -->
+            <div id="notepad" class="collapse">
+                <textarea ng-model="notePad" cols="30" rows="7" style="font-family: monospace; background: wheat;"></textarea>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="kit.js"></script>
+    <script src="kitCtrl.js"></script>
+    
+</body>
