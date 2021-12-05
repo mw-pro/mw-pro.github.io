@@ -1,0 +1,45 @@
+body {
+    background-color: black; 
+    color:green; 
+    font-family: monospace;
+    font-size: 14px;
+}
+.header-container {
+    display: flex; 
+    padding-left: 5%; 
+    padding-right: 5%;
+}
+.header-img-container {
+    display: flex; 
+    color: white; 
+    flex-wrap: wrap-reverse;
+}
+
+.maintext{
+    padding-top: 12px; 
+}
+.maintext h1 {
+    letter-spacing: 5px;
+}
+
+#primary-column{
+    color:inherit;
+}
+#primary-column legend {
+    color:rosybrown
+}
+#secondary-column{
+    color:inherit
+}
+#secondary-column fieldset {
+    margin-top: 50px;
+}
+#secondary-column legend {
+    color: rosybrown;
+}
+
+.flex-container{ 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+}
