@@ -464,7 +464,7 @@
 
                                     </table>
                                     
-                                    <p style="margin-top: 15px;font-weight: bold;"> Loan amount required: <i>{{newProp - deposit | currency:'£'}}</i> </p>
+                                    <p style="margin-top: 15px;font-weight: bold;"> Loan amount required: <i> {{ newProp || oldProp - deposit | currency:'£'}} </i> </p>
 
                                 </div>
 
@@ -601,7 +601,7 @@
 
                                     <!-- SUB SECTION SHOWING AMOUNT REQUESTED, WILL APPEAR ABOVE THE MAX BORROW DISPLAY-->
                                     <p style="font-weight: bold;" ng-show="variation.HP || variation.REM || variation.PORT"> 
-                                        Amount requested: {{ newProp - deposit | currency:'£'}} 
+                                        Amount requested: {{ newProp || oldProp - deposit | currency:'£'}} 
                                     </p>
 
                                     <!-- MAX BORROWING-->

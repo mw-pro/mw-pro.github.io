@@ -1,0 +1,20 @@
+picture img{
+    width: 200px;
+    height: 125px;
+    border-radius: 6px;
+    border: #a68365 1.5px solid;
+    box-shadow: 0px 40px 0px #adc8d9;
+}
+.style-test p{
+    width:25px;
+    height: 25px;
+    margin: 2px;
+    border: black solid 1px;
+}
+/* editing the default pill style */
+.nav-pills .nav-link.active{
+    background-color: #3b3b40 !important;
+    color: #adc8d9 !important;
+    border-radius: 0px;
+    box-shadow: 3px 3px 10px grey;
+}

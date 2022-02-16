@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="menu.css"> 
+    <link rel="stylesheet" href="/mwstyle.css"> 
+
+    <!-- ANGULAR / BOOTSTRAP -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Fonts [https://fonts.google.com/]-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+    <title>Birthday Menu</title>  
+
+</head>
+
+
+<body>
+
+    <!-- The OG planning stages are noted below -->
+    <div style="display:none; margin-left: 300px;"> The Proposal 
+
+        <p>MAIN GOAL: False menu, a play on a restaurant/professional vibe, but for a very much intimate experience</p>
+        <p>SIDE GOALS: <br>
+            - <s>Title:</s> <span class="text3" style="font-size: 30px;"> Westy's </span> <br>
+            - <s>Design a logo/emblem to add to the authenticity </s> <img src="menu1logo1.jpg" style="height: 90px;"><br>
+            - <s>Create a banner, either vertically or horizontally, vert seems more appealing </s><br>
+            - Don't forget to add picture(s) of food to get the tastebuds going <Br>
+            - <s>Include a small paragraph about who you are [parody] </s><br>
+            - <s>Include the menu for the night</s> <br>
+            - <s>Allow a reservation to take place [parody] </s><br>
+            - <s>Include the location of the event</s> <br>
+            - <s>Include a way to contact the chef</s>
+        </p>
+
+    </div>
+
+
+    <!-- ACTUAL FINAL DRAFTS GO HERE -->
+    <!-- The Banner -->
+    <div>
+
+        <div id="full-bar" class="bg1 color3">
+
+            <img src="menu1logo1.jpg" class="card-img">
+            
+            <ul class="text1">
+                <li> <a href="#intro-screen" class="color3">Home</a> </li>
+                <li> <a href="#about-me" class="color3">Meet the chef</a> </li>
+                <li> <a href="#food-menu" class="color3">Know the menu</a> </li>
+                <li> <a href="#location" class="color3">Come find us</a> </li>
+                <li> <a href="#contact" class="color3">Get in touch</a> </li>
+            </ul>
+        
+            <div style="text-align: center; border-top: wheat 1px double; width: 85%; margin: 7%; padding-top: 50px;">
+
+                <a> <img src="fb_grey.png" style="height: 100px;"> </a>
+                
+                <a> <img src="twitter_white.png" style="height: 100px;"> </a>
+
+            </div>
+
+        </div>
+
+        <div id="reduced-bar" class="bg1 color3">
+
+            <div class="dropdown" style="display: flex; align-items: center;">
+                
+                <h1 data-toggle="dropdown" style="text-shadow: none;"> &#9776; </h1>
+
+                <ul class="dropdown-menu text2">
+                    <li> <a href="#intro-screen" class="color3">Home</a> </li>
+                    <li> <a href="#about-me" class="color3">Meet the chef</a> </li>
+                    <li> <a href="#food-menu" class="color3">Know the menu</a> </li>
+                    <li> <a href="#location" class="color3">Come find us</a> </li>
+                    <li> <a href="#contact" class="color3">Get in touch</a> </li>
+                </ul>
+
+            </div>
+
+            <img src="menu1logo1.jpg" style="height: 90%; padding: 12px;">
+        
+            <div style="display: flex; flex-direction: column; justify-content: space-evenly;">
+                 <a> <img src="fb_grey.png" style="height: 30px;"> </a>
+                 <a> <img src="twitter_white.png" style="height: 30px;"> </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div style="margin-bottom: 50px;">
+
+        <!-- FIRST VIEW AREA -->
+        <header id="intro-screen">
+
+            <p id="welcome-title" class="text3 color5">
+                Welcome to Westy's
+            </p>
+
+            <video autoplay muted loop id="myVideo">
+                <source src="frying1.mp4" type="video/mp4">
+            </video>               
+
+        </header>
+        
+        <!-- THE REST OF THE PAGE -->
+        <main id="main-page">
+
+            <!-- FIRST DRAFT -->
+            <div id="about-me" class="sub-cat bg3">
+
+                <section id="AM-outer" class="container" > 
+
+                    <section id="AM-inner">
+
+                        <article id="AM-description" class="text2">
+
+                            <i class="color1" style="font-size: 22px;">
+                                <h3 class="title text3">My Story</h3>
+                                <p>
+                                    Our head chef Mark has 7 years experience at the highest level of
+                                    fine dining, after working his way through the rankings from a modest
+                                    beginning in small kitchens, Mark has both the skill and the desire to
+                                    go above and beyond to meet your needs 
+                                </p>
+
+                                <p>
+                                    He now successfully runs 0 restaurants across the north of England,
+                                    all of which have Michelin stars 
+                                </p>
+
+                                <p>   
+                                    Mark prefers to use fresh ingredients at every step and goes local
+                                    where possible, definitely a fan of adding in a personal touch, 
+                                    turning something classic into his own 
+                                </p>
+                            </i>
+
+                        </article>
+
+                        <!-- AM Profile/Card -->
+                        <div style="padding-top: 50px;">
+
+                            <figure id="AM-profilecard"> 
+                    
+                                <!-- IMAGE -->
+                                <img src="https://thegreatwesty.github.io/M.jpg" style="border-radius: 50%; position: relative; top: -50px; max-width: 200px;">
+                                
+                                <!-- QUICK INFO -->
+                                <figcaption class="text1 color2" style="padding: 10px;">
+
+                                    <p style="text-align: center;"> 
+                                        <b class="color1" style="font-size: xx-large;">Mark West</b> <br>
+                                        <i style="font-size: large;" >"Truly a wonder to work with" - <b>Gordon Ramsay</b></i>
+                                    </p>
+
+                                    <section style="margin-left: 20px;">
+
+                                        <p> 
+                                            <b class="color1">Cuisines:</b>
+
+                                            <ul style="margin-left: 25px;">
+                                                <li> Chinese </li>
+                                                <li> Italian </li>
+                                                <li> English </li>
+                                                <li> Family </li>
+                                            </ul>
+                                        </p>
+
+                                        <p>
+                                            <b class="color1">Location: </b>
+                                            <br> 
+                                            Bradford, England
+                                        </p>
+
+                                    </section>
+
+                                </figcaption>
+
+                                <!-- RATING -->
+                                <p style="text-align: center;">
+                                    Rating:<br>
+                                    <b style="color: wheat; letter-spacing: 5px; font-size:xx-large;">&#9733;&#9733;&#9733;&#9733;&#9733;</b>
+                                </p>
+                                                            
+                            </figure>
+
+                        </div>
+
+                    </section>
+
+                </section>
+
+            </div>
+
+            <!-- FIRST DRAFT -->
+            <div id="food-menu" class="sub-cat bg2">
+
+                <div class="container">
+
+                    <h1 class="title text3" style="padding-top: 20px;">Westy's Menu</h1>
+                
+                    <!-- BUTTON NAVIGATION -->
+                    <ul class="nav nav-pills nav-justified text2" style="font-size: large;">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#menu-app">Appetizer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#menu-main">Main</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#menu-des">Dessert</a>
+                        </li>
+                    </ul>
+
+                    <!-- EACH MENU CATEGORY -->
+                    <div class="tab-content text2">
+
+                        <div id="menu-app" class="tab-pane container active">
+
+                            <div class="menu-inner">
+                                <div class="menu-card">
+                                    <h5>Wings</h5> 
+                                    <p>Chicken wings covered in a honey chilli sauce </p>
+                                </div> 
+                                
+                                <div class="menu-card">
+                                    <h5>Bruschetta</h5>
+                                    <p>A grilled bread rubbed with garlic, topped with olive oil and salt, my take on this will include a tomato based topping and a blend of locally sourced produce </p>
+                                </div>
+                                
+                                <div class="menu-card">
+                                    <h5>Soup</h5>
+                                    <p>Produced by request, the Chef's default being a hearty vegetable soup</p>
+                                </div>
+                                
+                                <div class="menu-card">
+                                    <h5>Pork & Chilli Lettuce Cups</h5>
+                                    <p>Combining light salad vegatables with a seasoned pork creates an excellent bitesized introduction to the true Westy's experience</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="menu-main" class="tab-pane container fade">
+                            
+                            <div class="menu-inner">
+                                <div class="menu-card">                                    
+                                    <h5>Stir fry</h5>
+                                    <p>A selection of vegetables brought together in a well balanced spice blend served over your choice of rice or noodles</p>
+                                </div>
+                                
+                                <div class="menu-card">                                    
+                                    <h5>Shepherds Pie</h5>
+                                    <p>My take on this hearty English classic will involve the incorporation of spice with a sweet potato topping</p>
+                                </div>
+                                
+                                <div class="menu-card">                                    
+                                    <h5>Lasagne</h5>
+                                    <p>A familiar dish which will be served with a tomato Focaccia bread to really promote the nascent lasagne flavours</p>
+                                </div>
+                                
+                                <div class="menu-card">                                    
+                                    <h5>The Westy Burger</h5>
+                                    <p>The titular option is a beef patty on brioche with an assortment of light vegetables, covered in the Chef's trademark sauce</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="menu-des" class="tab-pane container fade">
+                            
+                            <div class="menu-inner">
+                                <div class="menu-card">                                                       
+                                    <h5>Jelly and Ice Cream </h5>
+                                    <p>A simple take on a simple dish, individual flavour requests are taken</p>
+                                </div>
+                                
+                                <div class="menu-card">                                                       
+                                    <h5>Chocolate Fudge Pudding</h5>
+                                    <p>A delicate sponge pudding with a heavenly soft centre, served with a hand made vanilla custard</p>
+                                </div>
+                                
+                                <div class="menu-card">                                                        
+                                    <h5>Tiramisu</h5>
+                                    <p>A rich Italian classic balancing a strong coffee flavour against delicate textures </p>
+                                </div>
+                                
+                                <div class="menu-card">                                                        
+                                    <h5>Cheesecake</h5>
+                                    <p>My adaptation of this popular dessert will include chocolate and toffee, served with a selection of fruits and cream</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                
+                </div>
+
+            </div>
+
+            <!-- FIRST DRAFT -->
+            <div id="location" class="sub-cat bg4">
+
+                <div id="location-container" class="container">
+                    <p>
+                        <h3 class="text1" style="text-align: center;">Here we are!</h3>
+                        <h5 class="text1" style="text-align: center;"> Free parking for up to 0 guests! </h5>
+                        <iframe id="location-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1179.919480166623!2d-1.7696059750708464!3d53.73894288125385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487be74ed78ec8b7%3A0xcb96a1045b9bc9e4!2sGarden%20Fld%2C%20Wyke%2C%20Bradford!5e0!3m2!1sen!2suk!4v1643225051287!5m2!1sen!2suk"  width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- FIRST DRAFT -->
+            <div id="contact" class="sub-cat bg5">
+
+                <div class="container">
+
+                    <h1 class="title text1" style="padding-top: 20px;">Contact me</h1>
+                    
+                    <p id="contact-content" class="bg3 text2">
+
+                        <span class="text1" style="font-weight: bold;">OPEN HOURS</span>
+                        <span>MON - FRI | 5:00pm until 11:00pm</span>
+                        <span>SAT | 6:00pm until 11:30pm </span>
+                        <span class="contact-divider">SUN | 6:30 until 12:00 </span>
+                        <span>Please place your order 48 hours in advance</span>
+                        <span class="contact-divider">Any specific dietary requirements can be accomodated</span>
+                        <span class="text1" style="font-weight: bold;"> &#x2709; westysrestaurant@mail.co.uk</span>
+                    
+                    </p>
+
+                    <ul id="contact-menu">
+
+                        <li> <a href="#intro-screen" class="color4 text1">Home</a> </li>
+                        <li> <a href="#about-me" class="color4 text1">Chef</a> </li>
+                        <li> <a href="#food-menu" class="color4 text1">Menu</a> </li>
+                        <li> <a href="#location" class="color4 text1">Location</a> </li>
+                        <li> <a href="#contact" class="color4 text1">Reserve</a> </li>
+                    
+                    </ul>
+                    
+                </div>
+
+            </div>
+
+            <!-- FINAL DRAFT -->
+            <div class="sub-cat" style="min-height: 2vh; text-align: center; border-top: wheat double 5px;"> 
+                Copyright © 2022 No rights reserved - Fictional Restaurant (Westy's)
+            </div>
+
+        </main>
+
+    </div>
+
+
+</body>

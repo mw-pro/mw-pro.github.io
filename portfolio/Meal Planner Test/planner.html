@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="planner.css"> 
+    <link rel="stylesheet" href="/mwstyle.css"> 
+
+    <!-- ANGULAR / BOOTSTRAP -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Fonts [https://fonts.google.com/]-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+    <title>Planner/Scheduler</title>  
+
+</head>
+
+<body class="bg5">
+
+    <!-- STYLE INFO -->
+    <div style="display:none;">
+        <div class="style-test" style="padding: 15px; display: flex;">
+            Palette
+            <p class="bg1"> <span class="color2">aB</span> </p>
+            <p class="bg2"> <span class="color1">aB</span> </p>
+            <p class="bg3"> <span class="color4">aB</span> </p>
+            <p class="bg4"> <span class="color5">aB</span> </p>
+            <p class="bg5"> <span class="color3">aB</span> </p>
+        </div>
+
+        <div style="padding-left: 15px; display: flex; flex-direction: column;">
+            Fonts
+            <span class="text1 color1" style="font-size: 30px;">Headings [Nunito]</span>
+            <span class="text2 color2" style="font-size: 25px;">Information [EB Garamond]</span>
+            <span class="text3 color3" style="font-size: 20px;">Descriptors [Dancing Script]</span>
+        </div>
+    </div>
+
+    <div ng-app="planner" ng-controller="plannerCtrl">
+        
+        <!-- Key Information -->
+        <div class="bg1 color2" style="font-family: 'Nunito', sans-serif; letter-spacing: 5px; font-size: xx-large; height: 100px; display: flex; justify-content: center; align-items: center;">
+            --- TITLE GOES HERE ---
+        </div>
+
+        <!-- Primary Container -->
+        <div class="container" style="padding-top: 40px;">
+
+            <!-- Tab Titles -->
+            <ul class="nav nav-pills nav-justified" role="tablist" style="font-size: 20px; font-family: 'Nunito', serif;">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#today"> Today </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#thisweek"> This Week </a>
+                </li>
+                <li class="nav-item" style="display: none;">
+                    <a class="nav-link" data-toggle="tab" href="#select"> Select Options </a>
+                </li>
+            </ul>
+
+            <!-- Tab Information -->
+            <div class="tab-content text2">
+
+                <div id="today" class="tab-pane container fade" style="margin-top:40px;">
+                    
+                    This whole section needs to filter depending on which day of the week it is
+                    <div style="display: flex; justify-content:space-between;">
+
+                        <p class="text3 color5" style="font-size: x-large; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                            <picture>
+                                <img src="https://thegreatwesty.github.io/project1/images/cereal.jpg">
+                            </picture>
+                            Breakfast
+                        </p>
+
+                        <p class="text3 color5" style="font-size: x-large; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                            <picture>
+                                <img src="https://thegreatwesty.github.io/project1/images/dinner.jpg">
+                            </picture>
+                            Dinner                        
+                        </p>
+
+                        <p class="text3 color5" style="font-size: x-large; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                            <picture>
+                                <img src="https://thegreatwesty.github.io/project1/images/lasagne.jpg">
+                            </picture>
+                            Tea                        
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div id="thisweek" class="tab-pane container active" style="margin-top:40px;" >
+                    This section, however, will just display all days and options in a table
+                    
+                    <table class="bg3" style="width:100%;">
+                        <colgroup>
+                          <col style="width:20%;">
+                        </colgroup>
+                        <tr class="bg4">
+                            <th>Menu</th>
+                            <th>Breakfast</th>
+                            <th>Dinner</th>
+                            <th>Tea</th>
+                        </tr>
+
+                        <tr style="vertical-align: middle; ">
+                            <th>Monday</th>
+                            <td> Cereal </td>
+                            <td> Ham Sandwich, Yoghurt, Malt Loaf, Cheese, Cucumber </td>
+                            <td> Chicken Roast</td>
+                        </tr>
+
+                        <tr style="vertical-align: middle;">
+                            <th>Tuesday</th>
+                            <td> Cereal </td>
+                            <td> Ham Sandwich, Yoghurt, Malt Loaf, Cheese, Cucumber </td>
+                            <td> Chicken Roast</td>
+                        </tr>
+
+                        <tr style="vertical-align: middle;">
+                            <th>Wednesday</th>
+                            <td> Cereal </td>
+                            <td> Ham Sandwich, Yoghurt, Malt Loaf, Cheese, Cucumber </td>
+                            <td> Chicken Roast</td>
+                        </tr>
+
+                        <tr style="vertical-align: middle;">
+                            <th>Thursday</th>
+                            <td> Cereal </td>
+                            <td> Ham Sandwich, Yoghurt, Malt Loaf, Cheese, Cucumber </td>
+                            <td> Chicken Roast</td>
+                        </tr>
+
+                        <tr style="vertical-align: middle;">
+                            <th>Friday</th>
+                            <td> Cereal </td>
+                            <td> Ham Sandwich, Yoghurt, Malt Loaf, Cheese, Cucumber </td>
+                            <td> Chicken Roast</td>
+                        </tr>
+
+                        <tr style="vertical-align: middle;">
+                            <th>Saturday</th>
+                            <td> Cereal </td>
+                            <td> Ham Sandwich, Yoghurt, Malt Loaf, Cheese, Cucumber </td>
+                            <td> Chicken Roast</td>
+                        </tr>
+
+                        <tr style="vertical-align: middle;">
+                            <th>Sunday</th>
+                            <td> Cereal </td>
+                            <td> Ham Sandwich, Yoghurt, Malt Loaf, Cheese, Cucumber </td>
+                            <td> Chicken Roast</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+                <div id="select" class="tab-pane container fade" style="margin-top:40px;" >
+                    NEW FOOD AHAHAHA
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="planner.js"></script>
+    <script src="plannerCtrl.js"></script>
+
+</body>
